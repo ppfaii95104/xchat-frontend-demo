@@ -1,0 +1,90 @@
+@import "color.css";
+
+.chat-name {
+  font-size: 14px;
+  font-weight: 700;
+  line-height: "normal" !important;
+  font-family: "Noto Sans Thai";
+}
+
+.chat-messenge {
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--drak-grey);
+  font-family: "Noto Sans Thai";
+}
+
+.name {
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--drak-grey);
+  font-family: "Noto Sans Thai";
+}
+
+.bg-gradient {
+  background: linear-gradient(180deg, #ff6c11 0%, #ff4040 100%) !important;
+}
+
+.btn-icon-grey {
+  background-color: var(--grey) !important;
+  color: var(--drak-grey) !important;
+}
+.btn-icon-grey2 {
+  background-color: #e9ebf3 !important;
+  color: var(--drak-grey) !important;
+}
+
+.btn-icon-grey:hover,
+.btn-icon-grey-active,
+.btn-icon-grey2:hover,
+.btn-icon-grey2-active {
+  background-color: var(--primary-light) !important;
+  color: var(--primary) !important;
+}
+.btn-gradient {
+  background: linear-gradient(180deg, #ff6c11 0%, #ff4040 100%) !important;
+  color: var(--white) !important;
+}
+.btn-gradient :hover,
+.ant-btn-default.btn-gradient:not(:disabled):not(.ant-btn-disabled):hover {
+  color: var(--white) !important;
+  background: linear-gradient(180deg, #ff6c11 0%, #ff4040 100%) !important;
+  border-color: var(--primary) !important;
+}
+.tab-wrap .ant-tabs .ant-tabs-tab.ant-tabs-tab-active .ant-tabs-tab-btn {
+  color: var(--primary) !important;
+}
+.ant-tabs .ant-tabs-ink-bar {
+  background-color: var(--primary) !important;
+}
+.tab-color .ant-tabs-nav {
+  margin: 0 !important;
+}
+
+.main-menu .ant-menu-light .ant-menu-item-selected,
+.main-menu
+  .ant-menu-light:not(.ant-menu-horizontal)
+  .ant-menu-item:not(.ant-menu-item-selected):hover {
+  color: var(--white);
+  border-color: var(--primary);
+}
+
+.main-menu .ant-menu .ant-menu-item .ant-menu-item-icon {
+  background-color: var(--white);
+  padding: 7px;
+  border-radius: 5px;
+  color: var(--drak-grey);
+  font-size: 35px;
+}
+
+.main-menu .ant-menu-light .ant-menu-item-selected .ant-menu-item-icon {
+  background: linear-gradient(180deg, #ff6c11 0%, #ff4040 100%) !important;
+  color: var(--white);
+}
+
+.main-menu .ant-menu-light .ant-menu-item-selected {
+  background-color: inherit;
+}
+.main-menu .ant-menu-inline-collapsed > .ant-menu-item {
+  padding-inline: 0;
+}

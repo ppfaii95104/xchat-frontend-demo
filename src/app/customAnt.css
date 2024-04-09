@@ -1,0 +1,72 @@
+@import "color.css";
+/* ========================================================= ANT CSS =======================================================  */
+
+.ant-btn-primary {
+  color: var(--white);
+  background-color: var(--primary) !important;
+
+  padding: 0 10px;
+}
+
+.ant-btn-primary:disabled {
+  color: var(--white);
+  background-color: #c4c4c4 !important;
+  box-shadow: 0 2px 0 rgba(5, 145, 255, 0.1);
+}
+
+.ant-btn-background-ghost {
+  color: var(--primary) !important;
+  border-color: var(--primary) !important;
+}
+
+.ant-btn-icon-only {
+  display: flex !important;
+  justify-content: center !important;
+  align-items: center !important;
+}
+
+.ant-input-search-button {
+  background-color: var(--white);
+}
+
+.ant-badge.ant-badge-status .ant-badge-status-dot {
+  width: 10px;
+  height: 10px;
+}
+
+.gray-menu .ant-menu-light .ant-menu-item-selected,
+.gray-menu
+  .ant-menu-light:not(.ant-menu-horizontal)
+  .ant-menu-item:not(.ant-menu-item-selected):hover {
+  background: var(--primary-light);
+  color: var(--primary);
+  border-color: var(--primary);
+}
+
+.gray-menu .ant-menu .ant-menu-item .ant-menu-item-icon {
+  background-color: var(--white);
+  padding: 5px;
+  border-radius: 5px;
+  color: var(--drak-grey);
+  font-size: 30px;
+}
+
+.gray-menu .ant-menu-light .ant-menu-item-selected .ant-menu-item-icon {
+  background-color: inherit;
+  color: var(--primary);
+}
+
+.gray-menu .ant-menu-light {
+  background: var(--grey) !important;
+}
+
+.ant-btn:not(:disabled):focus-visible {
+  outline: 2px solid var(--primary);
+  outline-offset: 1px;
+}
+.ant-card .ant-card-body {
+  padding: 10px;
+  width: 100%;
+}
+
+/* ========================================================= ANT CSS =======================================================  */
