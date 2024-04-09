@@ -30,7 +30,7 @@ import {
   SearchOutlined,
   BarsOutlined,
 } from "@ant-design/icons";
-export default function ChatRoomLock(_prop) {
+export default function ChatRoomLock(_prop: any) {
   return (
     <div className="w-full h-full p-4 bg-white">
       <div className="w-full h-full p-2 bg-grey rounded-md text-drak-grey">
