@@ -1,5 +1,5 @@
 "use client"; // This is a client component 👈🏽
-import React, { useState } from "react";
+import React, { useState,useEffect } from "react";
 import Image from "next/image";
 import {
   UploadOutlined,
@@ -24,6 +24,10 @@ import logo from "@/asset/logo/logo.png";
 const { Header, Sider, Content } = Layout;
 
 export default function LayoutPage(_prop: any) {
+  
+  useEffect(() => {
+    console.log("🚀 ~ LayoutPage ~ _prop:", _prop)
+  }, [_prop]);
   return (
     <html lang="en">
       <body
@@ -118,7 +122,7 @@ export default function LayoutPage(_prop: any) {
                 minHeight: 740,
                 background: "#F4F5F9",
               }}>
-              {_prop.page}
+              {_prop.children}
             </Content>
           </Layout>
         </Layout>
