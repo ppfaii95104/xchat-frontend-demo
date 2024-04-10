@@ -10,11 +10,10 @@
 /* From Public Directory */
 @font-face {
   font-family: "Noto Sans Thai";
-  src: url("https://fonts.googleapis.com/css2?family=Noto+Sans+Thai:wght@100..900&display=swap");
-  font-style: medium;
-  font-weight: normal;
-  font-display: swap;
+  src: url("../asset/font/NotoSansThai-VariableFont.ttf") format("truetype");
+  font-style: normal;
 }
+
 :root,
 html {
   font-family: "Noto Sans Thai", cursive;
