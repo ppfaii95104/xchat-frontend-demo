@@ -10,12 +10,6 @@ const noto = Noto_Sans_Thai({
   display: "swap",
   variable: "--font-noto",
 });
-const sarabun = Sarabun({
-  weight: ["100", "200", "300", "400", "500", "600", "700", "800"],
-  subsets: ["thai", "latin"],
-  display: "swap",
-  variable: "--font-noto",
-});
 
 export default function RootLayout({
   children,
@@ -30,7 +24,7 @@ export default function RootLayout({
         <link rel="icon" href="../asset/logo/logo.png"></link>
       </Head>
 
-      <body className={sarabun.className}>{children}</body>
+      <body className={`${noto.variable}`}>{children}</body>
     </html>
   );
 }

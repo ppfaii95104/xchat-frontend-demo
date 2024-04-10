@@ -9,19 +9,19 @@
 
 /* From Public Directory */
 @font-face {
-  font-family: "Noto Sans Thai";
+  font-family: var(--font-noto);
   src: url("../asset/font/NotoSansThai-VariableFont.ttf") format("truetype");
   font-style: normal;
 }
 
 :root,
 html {
-  font-family: "Noto Sans Thai", cursive;
+  font-family: var(--font-noto), cursive;
 }
 
 body {
   /* ... */
-  font-family: "Noto Sans Thai", cursive;
+  font-family: var(--font-noto), cursive;
   background: var(--grey);
 }
 @layer utilities {

@@ -195,7 +195,7 @@ export default function ChatPageLayout(_prop: any) {
             padding: "25px 15px",
             marginRight: "16px",
             border: "none",
-            fontFamily: "Noto Sans Thai",
+            fontFamily: "var(--font-noto)",
           }}
           className="gray-menu overflow-auto">
           <Button
@@ -235,7 +235,7 @@ export default function ChatPageLayout(_prop: any) {
             ]}
             style={{
               borderInlineEnd: "0",
-              fontFamily: "Noto Sans Thai",
+              fontFamily: "var(--font-noto)",
             }}
           />
           <Divider className="my-1" />
@@ -276,7 +276,7 @@ export default function ChatPageLayout(_prop: any) {
             ]}
             style={{
               borderInlineEnd: "0",
-              fontFamily: "Noto Sans Thai",
+              fontFamily: "var(--font-noto)",
             }}
           />
           <Divider className="mt-2 mb-4" />
@@ -436,7 +436,7 @@ export default function ChatPageLayout(_prop: any) {
                 style={{
                   background: "#FFF",
                   border: "none",
-                  fontFamily: "Noto Sans Thai",
+                  fontFamily: "var(--font-noto)",
                 }}>
                 <Header
                   className="h-[60px] bg-white px-4 py-2"
@@ -662,7 +662,7 @@ export default function ChatPageLayout(_prop: any) {
                 width="280"
                 style={{
                   background: "#FFF",
-                  fontFamily: "Noto Sans Thai",
+                  fontFamily: "var(--font-noto)",
                   overflow: "hidden",
                   position: "relative",
                   width: " 100%",

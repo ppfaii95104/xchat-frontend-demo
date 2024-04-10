@@ -77,14 +77,14 @@
 }
 .ant-tabs .ant-tabs-tab .ant-tabs-tab-btn {
   color: var(--drak-grey);
-  font-family: "Noto Sans Thai";
+  font-family: var(--font-noto);
 }
 .ant-form-item-label,
 .ant-select-selection-placeholder,
 .ant-input,
 .ant-btn > span,
 .ant-segmented-item-label {
-  font-family: "Noto Sans Thai";
+  font-family: var(--font-noto);
 }
 :where(.css-dev-only-do-not-override-1kuana8).ant-btn-default:not(
     :disabled

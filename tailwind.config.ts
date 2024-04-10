@@ -9,7 +9,7 @@ const config: Config = {
   theme: {
     extend: {
       fontFamily: {
-        noto: ["Noto Sans Thai"],
+        noto: ["var(--font-noto)"],
       },
       colors: {
         "primary-light": "#FFECD4",

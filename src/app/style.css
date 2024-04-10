@@ -4,21 +4,21 @@
   font-size: 14px;
   font-weight: 700;
   line-height: "normal" !important;
-  font-family: "Noto Sans Thai";
+  font-family: var(--font-noto);
 }
 
 .chat-messenge {
   font-size: 12px;
   font-weight: 600;
   color: var(--drak-grey);
-  font-family: "Noto Sans Thai";
+  font-family: var(--font-noto);
 }
 
 .name {
   font-size: 18px;
   font-weight: 700;
   color: var(--drak-grey);
-  font-family: "Noto Sans Thai";
+  font-family: var(--font-noto);
 }
 
 .bg-gradient {
