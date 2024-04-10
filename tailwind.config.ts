@@ -20,8 +20,8 @@ const config: Config = {
         "grey-box": "#E4E6EC",
       },
       zIndex: {
-        '1': '1',
-      }
+        "1": "1",
+      },
     },
   },
   plugins: [],
