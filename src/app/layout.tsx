@@ -1,8 +1,9 @@
 import "./globals.css";
 import { Noto_Sans_Thai } from "next/font/google";
 import localFont from "next/font/local";
+import Head from "next/head";
 import React, { useState } from "react";
-import Document, { Html, Head, Main, NextScript } from "next/document";
+
 //👇 Configure our font object
 const noto = Noto_Sans_Thai({
   weight: ["100", "200", "300", "400", "500", "600", "700", "800", "900"],
@@ -18,7 +19,14 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={noto.className}>{children}</body>
+      <Head>
+        {/* preconnect scripts... */}
+        <link
+          href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400..700&display=swap"
+          rel="stylesheet"
+        />
+      </Head>
+      <body>{children}</body>
     </html>
   );
 }

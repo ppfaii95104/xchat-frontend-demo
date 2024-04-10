@@ -4,17 +4,17 @@
 @import "color.css";
 @import "customAnt.css";
 @import "style.css";
-
+@import url("https://fonts.googleapis.com/css2?family=Noto+Sans+Thai:wght@100..900&display=swap");
 :root,
 html {
-  font-family: "Noto Sans Thai";
+  font-family: "Noto Sans Thai", cursive;
 }
 
 body {
-  font-family: "Noto Sans Thai";
+  /* ... */
+  font-family: "Noto Sans Thai", cursive;
   background: var(--grey);
 }
-
 @layer utilities {
   .text-balance {
     text-wrap: balance;
