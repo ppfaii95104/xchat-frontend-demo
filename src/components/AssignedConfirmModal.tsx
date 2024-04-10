@@ -10,7 +10,10 @@ import { SearchOutlined } from "@ant-design/icons";
 type FieldType = {
   search?: string;
 };
-export default function AssignedConfirmModal(_prop: any) {
+export default function AssignedConfirmModal({
+  handleCancel = () => {},
+  ..._prop
+}) {
   return (
     <Modal
       className="assigned-confirm-modal"
@@ -23,8 +26,13 @@ export default function AssignedConfirmModal(_prop: any) {
       open={_prop.open}
       width={300}
       closeIcon={false}
-      onCancel={() => _prop.onCancel()}
-      onOk={() => _prop.onOk()}
+      onOk={() => {
+        _prop.setOpen(false);
+      }}
+      onCancel={() => {
+        _prop.setName(null);
+        _prop.setOpen(false);
+      }}
       okText="ยืนยัน"
       cancelText="ยกเลิก">
       <div className="flex flex-col justify-center items-center">

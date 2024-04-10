@@ -91,3 +91,22 @@
 .chat-room :hover {
   background-color: var(--primary-light);
 }
+
+.gary-input .ant-input-outlined:focus,
+.gary-input .ant-input-outlined:focus-within,
+.gary-input .ant-input-outlined {
+  background-color: #e3e4e8;
+  color: var(--drak-grey);
+  border-color: var(--drak-grey);
+}
+
+.ant-radio-checked .ant-radio-inner,
+.ant-radio-checked .ant-radio-inner:after,
+.ant-radio:hover .ant-radio-inner {
+  border-color: var(--primary);
+}
+
+.ant-radio-checked .ant-radio-inner {
+  border-color: var(--primary) !important;
+  background-color: var(--primary) !important;
+}

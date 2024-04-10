@@ -20,6 +20,7 @@ import {
 } from "antd";
 import { SearchOutlined, UserOutlined } from "@ant-design/icons";
 import AssignedConfirmModal from "./AssignedConfirmModal";
+import { Console } from "console";
 type FieldType = {
   search?: string;
   type?: string;
@@ -72,13 +73,14 @@ export default function AssignedModal(_prop: any) {
     _prop.setOpen(false);
   };
 
-  const handleOK = () => {
-    setOpen(false);
-    _prop.setOpen(false);
-  };
-  const handleCancel = () => {
-    setOpen(false);
-  };
+  useEffect(() => {
+    console.log("open:", open);
+    console.log("name:", name);
+    if (!open && name) {
+      _prop.setOpen(false);
+      setName(null);
+    }
+  }, [open]);
   return (
     <Modal
       open={_prop.open}
@@ -165,8 +167,8 @@ export default function AssignedModal(_prop: any) {
       <AssignedConfirmModal
         open={open}
         name={name}
-        onOk={handleOK}
-        onCancel={handleCancel}
+        setOpen={setOpen}
+        setName={setName}
       />
     </Modal>
   );

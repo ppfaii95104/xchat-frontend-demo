@@ -63,6 +63,8 @@ import { text } from "stream/consumers";
 import ChangeAdminModal from "@/components/ChangeAdminModal";
 import AddTagModal from "@/components/AddTagModal";
 import AssignedModal from "@/components/AssignedModal";
+import EndChatConfirmModal from "@/components/EndChatConfirmModal";
+import SendChatHistoryModal from "@/components/SendChatHistoryModal";
 const { Header, Footer, Sider, Content } = Layout;
 type tagType = {
   messenge?: string;
@@ -150,8 +152,10 @@ export default function ChatPageLayout(_prop: any) {
   const [open, setOpen] = useState(false);
   const [openChangeAdmin, setOpenChangeAdmin] = useState(false);
   const [openAssigned, setOpenAssigned] = useState(false);
-
   const [openTagModal, setOpenTagModal] = useState(false);
+  const [openEndChat, setOpenEndChat] = useState(false);
+  const [openChatHistoryModal, setOpenSendChatHistoryModal] = useState(false);
+
   const [listTag, setListTag] = useState<tagType[]>([]);
   const toggleCollapsed = () => {
     setCollapsed(!collapsed);
@@ -571,6 +575,9 @@ export default function ChatPageLayout(_prop: any) {
                         <Button
                           type="primary"
                           className="btn-icon-grey"
+                          onClick={() => {
+                            setOpenSendChatHistoryModal(true);
+                          }}
                           icon={
                             <svg
                               width="18"
@@ -626,13 +633,16 @@ export default function ChatPageLayout(_prop: any) {
                       <div className="flex justify-end w-[60%]">
                         <Button
                           className="font-noto flex justify-center items-center"
+                          onClick={() => {
+                            setOpenEndChat(true);
+                          }}
                           icon={<CheckSquareFilled />}>
                           จบแชท
                         </Button>
                         <Button
                           className="mx-1 font-noto flex justify-center items-center"
                           onClick={() => {
-                            // setOpenAssigned(true);
+                            setOpenAssigned(true);
                           }}>
                           <IoLogIn className="text-lg" />
                           ส่งต่อให้...
@@ -800,6 +810,11 @@ export default function ChatPageLayout(_prop: any) {
         addTag={addTag}
       />
       <AssignedModal setOpen={setOpenAssigned} open={openAssigned} />
+      <EndChatConfirmModal setOpen={setOpenEndChat} open={openEndChat} />
+      <SendChatHistoryModal
+        setOpen={setOpenSendChatHistoryModal}
+        open={openChatHistoryModal}
+      />
     </>
   );
 }
