@@ -1,6 +1,9 @@
 "use client"; // This is a client component 👈🏽
 import React, { useState } from "react";
-import MessengerLogo from "./MessengerLogo";
+import MessengerLogo from "@/components/logo/MessengerLogo";
+import TelegramLogo from "@/components/logo/TelegramLogo";
+import TiktokLogo from "@/components/logo/TiktokLogo";
+import WhatsAppLogo from "@/components/logo/WhatsAppLogo";
 import {
   Layout,
   Menu,
@@ -12,10 +15,15 @@ import {
   Empty,
   Avatar,
   Form,
+  Checkbox,
 } from "antd";
-
+import {
+  BiSolidFile,
+  BiSolidVolumeMute,
+  BiSolidPlusSquare,
+} from "react-icons/bi";
 import { LeftOutlined, BarsOutlined } from "@ant-design/icons";
-export default function TabSetting(_prop) {
+export default function TabSetting(_prop: any) {
   return (
     <div>
       <Form name="basic" autoComplete="off" layout="vertical">
@@ -95,12 +103,12 @@ export default function TabSetting(_prop) {
         />
         <div className="px-[15px] py-[5px] mb-2 flex flex-col">
           <div className=" mb-2 flex justify-between items-center">
-            <span className="font-noto">ข้อมูลผู้ติดต่อ </span>
+            <span className="font-noto">แท็ก</span>
             <Button
               type="link"
-              className="flex items-center text-primary p-0 "
-              icon={<LeftOutlined />}>
-              เพิ่มข้อมูล
+              className="flex items-center text-primary p-0 font-noto"
+              icon={<BiSolidPlusSquare />}>
+              เพิ่มแท็ก
             </Button>
           </div>
           <span className="font-noto text-sm text-drak-grey mt-3">
@@ -116,17 +124,16 @@ export default function TabSetting(_prop) {
         />
         <div className="px-[15px] py-[5px] mb-2 flex flex-col">
           <div className=" mb-2 flex justify-between items-center">
-            <span className="font-noto">ข้อมูลผู้ติดต่อ </span>
+            <span className="font-noto">รายชื่อผู้เข้าร่วม</span>
             <Button
               type="link"
-              className="flex items-center text-primary p-0 "
-              icon={<LeftOutlined />}>
-              เพิ่มข้อมูล
+              className="flex items-center text-primary p-0 font-noto"
+              icon={<BiSolidPlusSquare />}>
+              เพิ่มรายชื่อ
             </Button>
           </div>
           <span className="font-noto text-sm text-drak-grey mt-3">
-            {" "}
-            เพิ่มแท็กกำกับการสนทนา
+            เพิ่มผู้เข้าร่วมกำกับการสนทนา
           </span>
         </div>
       </Form>

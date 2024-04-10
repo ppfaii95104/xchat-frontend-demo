@@ -1,7 +1,7 @@
 "use client"; // This is a client component 👈🏽
 import React, { useState } from "react";
 
-export default function MessengerLogo(_prop) {
+export default function MessengerLogo() {
   return (
     <div className=" flex items-center justify-center">
       <svg

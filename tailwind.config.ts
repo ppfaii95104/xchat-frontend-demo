@@ -17,7 +17,11 @@ const config: Config = {
         secondary: "#FFD400",
         grey: "#F4F5F9",
         "drak-grey": "#6D6D6D",
+        "grey-box": "#E4E6EC",
       },
+      zIndex: {
+        '1': '1',
+      }
     },
   },
   plugins: [],

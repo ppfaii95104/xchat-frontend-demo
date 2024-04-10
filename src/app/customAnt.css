@@ -48,7 +48,7 @@
   padding: 5px;
   border-radius: 5px;
   color: var(--drak-grey);
-  font-size: 30px;
+  font-size: 25px;
 }
 
 .gray-menu .ant-menu-light .ant-menu-item-selected .ant-menu-item-icon {
@@ -68,5 +68,43 @@
   padding: 10px;
   width: 100%;
 }
+.ant-btn-link:not(:disabled):not(.ant-btn-disabled):hover {
+  color: var(--primary);
+  background: transparent;
+}
+.ant-tabs .ant-tabs-tab.ant-tabs-tab-active .ant-tabs-tab-btn {
+  color: var(--black);
+}
+.ant-tabs .ant-tabs-tab .ant-tabs-tab-btn {
+  color: var(--drak-grey);
+  font-family: "Noto Sans Thai";
+}
+.ant-form-item-label,
+.ant-select-selection-placeholder,
+.ant-input,
+.ant-btn > span,
+.ant-segmented-item-label {
+  font-family: "Noto Sans Thai";
+}
+:where(.css-dev-only-do-not-override-1kuana8).ant-btn-default:not(
+    :disabled
+  ):not(.ant-btn-disabled):hover {
+  color: var(--primary);
+  border-color: var(--primary);
+}
+.ant-modal-footer .ant-btn {
+  width: 150px;
+}
 
+.ant-checkbox-checked .ant-checkbox-inner {
+  background-color: var(--primary) !important;
+  border-color: var(--primary) !important;
+}
+.ant-segmented .ant-segmented-item-selected {
+  background-color: var(--primary) !important;
+  color: var(--white);
+}
+.assigned-confirm-modal .ant-modal-footer .ant-btn {
+  width: 120px !important;
+}
 /* ========================================================= ANT CSS =======================================================  */

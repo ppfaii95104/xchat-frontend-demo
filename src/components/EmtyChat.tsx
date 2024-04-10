@@ -1,7 +1,7 @@
 "use client"; // This is a client component 👈🏽
 import React, { useState } from "react";
 
-export default function EmtyChat(_prop) {
+export default function EmtyChat() {
   return (
     <div
       style={{

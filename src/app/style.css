@@ -88,3 +88,6 @@
 .main-menu .ant-menu-inline-collapsed > .ant-menu-item {
   padding-inline: 0;
 }
+.chat-room :hover {
+  background-color: var(--primary-light);
+}

@@ -122,7 +122,7 @@ export default function LayoutPage(_prop: any) {
                 minHeight: 740,
                 background: "#F4F5F9",
               }}>
-              {_prop.children}
+              {/* {_prop.children} */}
             </Content>
           </Layout>
         </Layout>
