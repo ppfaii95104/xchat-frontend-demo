@@ -1,6 +1,7 @@
 import "./globals.css";
 import { Noto_Sans_Thai } from "next/font/google";
 import React, { useState } from "react";
+import Document, { Html, Head, Main, NextScript } from "next/document";
 //👇 Configure our font object
 const noto = Noto_Sans_Thai({
   weight: ["100", "200", "300", "400", "500", "600", "700", "800", "900"],
