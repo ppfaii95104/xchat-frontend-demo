@@ -632,7 +632,7 @@ export default function ChatPageLayout(_prop: any) {
                         <Button
                           className="mx-1 font-noto flex justify-center items-center"
                           onClick={() => {
-                            setOpenAssigned(true);
+                            // setOpenAssigned(true);
                           }}>
                           <IoLogIn className="text-lg" />
                           ส่งต่อให้...
