@@ -1,1 +1,0 @@
-self.__NEXT_FONT_MANIFEST="{\"pages\":{},\"app\":{\"/Users/yolada/xchat/xchat-frontend-demo-1/src/app/layout\":[\"static/media/fdeb77dbe171451b-s.p.woff2\",\"static/media/14c8faeaedb3b528-s.p.woff2\"]},\"appUsingSizeAdjust\":true,\"pagesUsingSizeAdjust\":false}"
