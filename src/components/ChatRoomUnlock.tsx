@@ -24,7 +24,7 @@ import EndChatConfirmModal from "./EndChatConfirmModal";
 import SendChatHistoryModal from "./SendChatHistoryModal";
 
 import { messenge } from "@/app/chat/sampleData";
-export default function ChatRoomUnLock(_prop: any) {
+export default function ChatRoomUnlock(_prop: any) {
   const [openAssigned, setOpenAssigned] = useState(false);
   const [openChatHistoryModal, setOpenSendChatHistoryModal] = useState(false);
   const [openEndChat, setOpenEndChat] = useState(false);

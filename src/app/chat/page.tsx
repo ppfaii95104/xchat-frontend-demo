@@ -59,7 +59,7 @@ import MessengeBoxComponents from "@/components/MessengeBoxComponents";
 const { Header, Footer, Sider, Content } = Layout;
 import { tagType } from "./typeData";
 import { messenge, options, tagSample, userListSample } from "./sampleData";
-import ChatRoomUnLock from "@/components/ChatRoomUnLock";
+import ChatRoomUnlock from "@/components/ChatRoomUnlock";
 
 export default function ChatPage(_prop: any) {
   const [collapsed, setCollapsed] = useState(false);
@@ -310,7 +310,7 @@ export default function ChatPage(_prop: any) {
           {_.isEmpty(userChatRoomLock) ? (
             <EmtyChatRoom />
           ) : (
-            <ChatRoomUnLock
+            <ChatRoomUnlock
               setUserChatRoomLock={setUserChatRoomLock}
               userChatRoomLock={userChatRoomLock}
             />
