@@ -1,5 +1,5 @@
 "use client"; // This is a client component 👈🏽
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import _ from "lodash";
 import MessengerLogo from "@/components/logo/MessengerLogo";
 import TelegramLogo from "@/components/logo/TelegramLogo";
@@ -15,6 +15,7 @@ import {
   ColorPicker,
   ColorPickerProps,
   Select,
+  GetProp,
 } from "antd";
 import { SearchOutlined, UserOutlined } from "@ant-design/icons";
 type FieldType = {
@@ -23,15 +24,20 @@ type FieldType = {
   desc?: string;
   color?: string;
 };
-
+type Color = GetProp<ColorPickerProps, "value">;
 export default function AddTagModal(_prop: any) {
   const [form] = Form.useForm();
-
+  const [color, setColor] = useState<Color>("#FF6C11");
   const onFinish: FormProps<FieldType>["onFinish"] = (values: any) => {
-    console.log({ ...values, color: values.color.toHexString() });
-    _prop.addTag({ ...values, color: values.color.toHexString() });
+    console.log({ ...values });
+    _prop.addTag({
+      ...values,
+      color: color,
+    });
     _prop.setOpen(false);
+    form.resetFields();
   };
+
   return (
     <Modal
       title={
@@ -144,7 +150,11 @@ export default function AddTagModal(_prop: any) {
             //   },
             // ]}
           >
-            <ColorPicker defaultValue="#FF6C11" />
+            <ColorPicker
+              defaultValue={color}
+              value={color}
+              onChange={setColor}
+            />
           </Form.Item>
           <div className="flex justify-end">
             <Button

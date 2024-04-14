@@ -5,23 +5,14 @@
 @import "customAnt.css";
 @import "style.css";
 
-@import url("https://fonts.googleapis.com/css2?family=Noto+Sans+Thai:wght@100..900&display=swap");
-
-/* From Public Directory */
-@font-face {
-  font-family: var(--font-noto);
-  src: url("../asset/font/NotoSansThai-VariableFont.ttf") format("truetype");
-  font-style: normal;
-}
-
 :root,
 html {
-  font-family: var(--font-noto), cursive;
+  font-family: var(--font-noto);
 }
 
 body {
   /* ... */
-  font-family: var(--font-noto), cursive;
+  font-family: var(--font-noto);
   background: var(--grey);
 }
 @layer utilities {

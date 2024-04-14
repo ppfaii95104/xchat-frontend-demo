@@ -5,40 +5,52 @@ import MessengerLogo from "@/components/logo/MessengerLogo";
 import TelegramLogo from "@/components/logo/TelegramLogo";
 import TiktokLogo from "@/components/logo/TiktokLogo";
 import WhatsAppLogo from "@/components/logo/WhatsAppLogo";
-import { Avatar, Button, Modal, Form, Input, FormProps } from "antd";
+import {
+  Avatar,
+  Button,
+  Modal,
+  Form,
+  Input,
+  FormProps,
+  Radio,
+  Space,
+  Checkbox,
+} from "antd";
 import { SearchOutlined, UserOutlined } from "@ant-design/icons";
 type FieldType = {
   search?: string;
 };
 const userList = [
   {
+    id: 1,
     name: "Xchat",
     role: "Xchat",
     image:
       "https://img.freepik.com/free-photo/confident-attractive-caucasian-guy-beige-pullon-smiling-broadly-while-standing-against-gray_176420-44508.jpg?t=st=1712671203~exp=1712674803~hmac=533413db40a1e24dc770323bbf7bc7cd6f0ea704ee61e1a9839c1eab7478c389&w=2000",
   },
   {
+    id: 2,
     name: "Admin",
     role: "Xchat",
 
     image:
       "https://img.freepik.com/free-photo/trendy-woman-wearing-bucket-hat-medium-shot_23-2149356043.jpg?t=st=1712671549~exp=1712675149~hmac=f9f90aaa1f002b3a54ea502b3300652c9d7afe260ec245c8ea5b085b01258881&w=2000",
   },
-  {
-    name: "BCMKT",
-    role: "Xchat",
-  },
-  {
-    name: "SGA",
-    role: "Xchat",
-  },
+  { id: 3, name: "BCMKT", role: "Xchat" },
+  { id: 4, name: "SGA", role: "Xchat" },
 ];
 export default function ChangeAdminModal(_prop: any) {
   const [form] = Form.useForm();
-  const [values, setValues] = useState<any>(null);
+  const [values, setValues] = useState<number>(1);
+  const [adminData, setAdminData] = useState<any>({
+    id: 1,
+    name: "Xchat",
+    role: "Xchat",
+    image:
+      "https://img.freepik.com/free-photo/confident-attractive-caucasian-guy-beige-pullon-smiling-broadly-while-standing-against-gray_176420-44508.jpg?t=st=1712671203~exp=1712674803~hmac=533413db40a1e24dc770323bbf7bc7cd6f0ea704ee61e1a9839c1eab7478c389&w=2000",
+  });
   const onFinish: FormProps<FieldType>["onFinish"] = (values: any) => {
     console.log({ values });
-    setValues(values.search);
   };
   return (
     <Modal
@@ -54,7 +66,7 @@ export default function ChangeAdminModal(_prop: any) {
       }
       centered
       open={_prop.open}
-      onOk={() => _prop.setOpen(false)}
+      onOk={() => _prop.setAdmin(adminData)}
       onCancel={() => _prop.setOpen(false)}
       width={500}
       okText="ตกลง"
@@ -88,22 +100,45 @@ export default function ChangeAdminModal(_prop: any) {
               }
             />
           </Form.Item>
-          <div className="h-[600px] w-full flex flex-col">
+
+          <div className="h-[600px] w-full flex flex-col overflow-y-auto">
             {_.map(userList, (item) => {
               return (
-                <div className=" p-2 flex items-center relative border-[1px] border-grey my-1">
-                  {item.image ? (
-                    <Avatar size={35} src={item.image} />
-                  ) : (
-                    <Avatar size={35} icon={<UserOutlined />} />
-                  )}
+                <div
+                  className=" p-2 flex items-center relative border-[1px]  border-grey my-1 hover:border-primary hover:bg-primary-light"
+                  onClick={() => {
+                    setValues(item.id);
+                    setAdminData(item);
+                  }}
+                  style={{
+                    backgroundColor:
+                      item.id === values
+                        ? "var(--primary-light)"
+                        : "var(--white)",
+                  }}>
+                  <div className="flex  items-center mx-2 w-[90%] ">
+                    {item.image ? (
+                      <Avatar size={35} src={item.image} />
+                    ) : (
+                      <Avatar size={35} icon={<UserOutlined />} />
+                    )}
 
-                  <div className="flex flex-col mx-2 w-[45%]">
-                    <span className="font-noto chat-name my-1">
-                      {item.name}
-                    </span>
-                    <span className="font-noto chat-messenge">{item.role}</span>
+                    <div className="flex flex-col mx-2 w-[45%]">
+                      <span className="font-noto chat-name my-1">
+                        {item.name}
+                      </span>
+                      <span className="font-noto chat-messenge">
+                        {item.role}
+                      </span>
+                    </div>
                   </div>
+                  <Checkbox
+                    onClick={() => {
+                      setValues(item.id);
+                      setAdminData(item);
+                    }}
+                    checked={item.id === values}
+                  />
                 </div>
               );
             })}
