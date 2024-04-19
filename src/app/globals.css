@@ -8,6 +8,7 @@
 :root,
 html {
   font-family: var(--font-noto);
+  color: var(--grey-lable);
 }
 
 body {

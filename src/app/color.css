@@ -1,8 +1,14 @@
 :root {
-    --white: #FFF;
-    --black: #000;
-    --grey: #F4F5F9;
-    --drak-grey: #6D6D6D;
-    --primary: #FF6C11;
-    --primary-light: #FFECD4;
+  --white: #fff;
+  --black: #000;
+  --grey: #f4f5f9;
+  --drak-grey: #6d6d6d;
+  --primary: #ff6c11;
+  --primary-light: #ffecd4;
+  --grey-lable: #1a1a1a;
+  --table-head: #e9ebf3;
+  --success: #68c361;
+  --success-light: #e4f6e2;
+  --error: #e15959;
+  --error-light: #fce4e4;
 }

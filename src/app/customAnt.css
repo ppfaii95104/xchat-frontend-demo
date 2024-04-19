@@ -48,7 +48,7 @@
   padding: 5px;
   border-radius: 5px;
   color: var(--drak-grey);
-  font-size: 30px;
+  font-size: 25px;
 }
 
 .gray-menu .ant-menu-light .ant-menu-item-selected .ant-menu-item-icon {
@@ -83,7 +83,12 @@
 .ant-select-selection-placeholder,
 .ant-input,
 .ant-btn > span,
-.ant-segmented-item-label {
+.ant-segmented-item-label,
+.ant-select-item-option-content,
+.ant-picker-dropdown .ant-picker-header button,
+.ant-picker-dropdown .ant-picker-content th,
+.ant-picker-cell-inner,
+.ant-modal-title {
   font-family: var(--font-noto);
 }
 :where(.css-dev-only-do-not-override-1kuana8).ant-btn-default:not(
@@ -96,7 +101,8 @@
   width: 150px;
 }
 
-.ant-checkbox-checked .ant-checkbox-inner {
+.ant-checkbox-checked .ant-checkbox-inner,
+.ant-switch.ant-switch-checked {
   background-color: var(--primary) !important;
   border-color: var(--primary) !important;
 }
@@ -106,5 +112,25 @@
 }
 .assigned-confirm-modal .ant-modal-footer .ant-btn {
   width: 120px !important;
+}
+.ant-layout-content,
+.ant-input-group
+  .ant-input-group-addon
+  .ant-select-focused
+  .ant-select-selector {
+  color: var(--grey-lable);
+}
+.ant-select-dropdown
+  .ant-select-item-option-selected:not(.ant-select-item-option-disabled)
+  .ant-select-item-option-state {
+  color: var(--primary);
+}
+.switch-success .ant-switch.ant-switch-checked {
+  background-color: var(--success) !important;
+  border-color: var(--success) !important;
+}
+.ant-table-footer {
+  padding: 8px;
+  background-color: var(--white) !important;
 }
 /* ========================================================= ANT CSS =======================================================  */

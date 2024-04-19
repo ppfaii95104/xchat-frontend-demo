@@ -18,6 +18,11 @@ const config: Config = {
         grey: "#F4F5F9",
         "drak-grey": "#6D6D6D",
         "grey-box": "#E4E6EC",
+        "grey-lable": "#1a1a1a",
+        success: "#68C361",
+        "success-light": "#E4F6E2",
+        error: "#E15959",
+        "error-light": "#FCE4E4",
       },
       zIndex: {
         "1": "1",

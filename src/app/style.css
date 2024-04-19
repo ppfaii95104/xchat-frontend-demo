@@ -22,7 +22,11 @@
 }
 
 .bg-gradient {
-  background: linear-gradient(180deg, #ff6c11 0%, #ff4040 100%) !important;
+  background: linear-gradient(
+    180deg,
+    var(--primary) 0%,
+    #ff4040 100%
+  ) !important;
 }
 
 .btn-icon-grey {
@@ -42,13 +46,21 @@
   color: var(--primary) !important;
 }
 .btn-gradient {
-  background: linear-gradient(180deg, #ff6c11 0%, #ff4040 100%) !important;
+  background: linear-gradient(
+    180deg,
+    var(--primary) 0%,
+    #ff4040 100%
+  ) !important;
   color: var(--white) !important;
 }
 .btn-gradient :hover,
 .ant-btn-default.btn-gradient:not(:disabled):not(.ant-btn-disabled):hover {
   color: var(--white) !important;
-  background: linear-gradient(180deg, #ff6c11 0%, #ff4040 100%) !important;
+  background: linear-gradient(
+    180deg,
+    var(--primary) 0%,
+    #ff4040 100%
+  ) !important;
   border-color: var(--primary) !important;
 }
 .tab-wrap .ant-tabs .ant-tabs-tab.ant-tabs-tab-active .ant-tabs-tab-btn {
@@ -78,7 +90,11 @@
 }
 
 .main-menu .ant-menu-light .ant-menu-item-selected .ant-menu-item-icon {
-  background: linear-gradient(180deg, #ff6c11 0%, #ff4040 100%) !important;
+  background: linear-gradient(
+    180deg,
+    var(--primary) 0%,
+    #ff4040 100%
+  ) !important;
   color: var(--white);
 }
 
@@ -94,19 +110,37 @@
 
 .gary-input .ant-input-outlined:focus,
 .gary-input .ant-input-outlined:focus-within,
-.gary-input .ant-input-outlined {
+.gary-input .ant-input-outlined,
+.gary-input .ant-select-selector {
   background-color: #e3e4e8;
   color: var(--drak-grey);
+}
+.gary-input .ant-input-outlined:focus-within,
+.gary-input .ant-input-outlined:hover {
   border-color: var(--drak-grey);
 }
-
 .ant-radio-checked .ant-radio-inner,
 .ant-radio-checked .ant-radio-inner:after,
 .ant-radio:hover .ant-radio-inner {
   border-color: var(--primary);
 }
-
+.ant-select-dropdown
+  .ant-select-item-option-selected:not(.ant-select-item-option-disabled) {
+  background-color: var(--primary-light);
+}
 .ant-radio-checked .ant-radio-inner {
   border-color: var(--primary) !important;
   background-color: var(--primary) !important;
+}
+.ant-table-wrapper .ant-table-thead > tr > th {
+  background: var(--table-head);
+}
+.ant-table-cell,
+.ant-table-wrapper .ant-table-tbody > tr > td {
+  color: #595959 !important;
+  font-family: var(--font-noto);
+  padding: 8px 16px;
+}
+.ant-table-wrapper .ant-table {
+  line-height: 1;
 }

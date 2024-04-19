@@ -1,7 +1,7 @@
 "use client"; // This is a client component 👈🏽
 import React, { useState } from "react";
 
-export default function EmtyChat() {
+export default function EmtyChat(_prop: any) {
   return (
     <div
       style={{
@@ -137,7 +137,7 @@ export default function EmtyChat() {
           fill="#AAB2C5"
         />
       </svg>
-      <label className="text-[#F4F5F9] mt-2">ยังไม่มีการสนทนา</label>
+      <label className="font-noto text-[#595959] mt-2">{_prop.text}</label>
     </div>
   );
 }

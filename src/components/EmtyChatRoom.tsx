@@ -1,7 +1,7 @@
 "use client"; // This is a client component 👈🏽
 import React, { useState } from "react";
 
-export default function EmtyChatRoom() {
+export default function EmtyChatRoom(_prop: any) {
   return (
     <div
       style={{
@@ -175,9 +175,7 @@ export default function EmtyChatRoom() {
           </linearGradient>
         </defs>
       </svg>
-      <label className="text-[#F4F5F9] mt-2">
-        กรุณาเลือกการสนทนาจากด้านซ้าย
-      </label>
+      <label className="font-noto text-[#595959] mt-2">{_prop.text}</label>
     </div>
   );
 }
