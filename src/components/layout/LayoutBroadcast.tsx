@@ -30,7 +30,7 @@ const { Header, Footer, Sider, Content } = Layout;
 import { IoIosSettings } from "react-icons/io";
 
 import LayoutPage from "./LayoutPage";
-import { useRouter } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 import {
   TbSquareRoundedChevronLeftFilled,
   TbSquareRoundedChevronRightFilled,
@@ -39,6 +39,7 @@ import {
 export default function LayoutBroadcast(_prop: any) {
   const [collapsed, setCollapsed] = useState(false);
   const router = useRouter();
+  const location = usePathname();
   return (
     <LayoutPage>
       <Layout
@@ -69,7 +70,7 @@ export default function LayoutBroadcast(_prop: any) {
 
             <Menu
               mode="inline"
-              defaultSelectedKeys={["1"]}
+              selectedKeys={[location]}
               onSelect={({ item, key, keyPath, selectedKeys, domEvent }) => {
                 router.push(key);
               }}
@@ -101,6 +102,7 @@ export default function LayoutBroadcast(_prop: any) {
             </span>
 
             <Menu
+              selectedKeys={[location]}
               mode="inline"
               items={[
                 {

@@ -8,6 +8,7 @@ import { BsChevronDown, BsChevronUp } from "react-icons/bs";
 
 export const userListSample = [
   {
+    id: 1,
     name: "MBK1688",
     idLine: "@594ihds",
     status: "พร้อมใช้งาน",
@@ -16,6 +17,7 @@ export const userListSample = [
       "https://img.freepik.com/free-photo/confident-attractive-caucasian-guy-beige-pullon-smiling-broadly-while-standing-against-gray_176420-44508.jpg?t=st=1712671203~exp=1712674803~hmac=533413db40a1e24dc770323bbf7bc7cd6f0ea704ee61e1a9839c1eab7478c389&w=2000",
   },
   {
+    id: 2,
     name: "MAJOR168 (สำรอง)",
     idLine: "@333eclhw",
     status: "พร้อมใช้งาน",

@@ -36,6 +36,8 @@ import { messenge } from "@/app/chat/sampleData";
 import ContactInformationModal from "./ContactInformationModal";
 import { BsFacebook, BsTwitterX } from "react-icons/bs";
 import TabData from "./TabData";
+import TabHistory from "./TabHistory";
+import { BiSolidShow } from "react-icons/bi";
 export default function ChatRoomUnlock(_prop: any) {
   const [openAssigned, setOpenAssigned] = useState(false);
   const [openChatHistoryModal, setOpenSendChatHistoryModal] = useState(false);
@@ -178,18 +180,23 @@ export default function ChatRoomUnlock(_prop: any) {
             </div>
 
             <div className="mx-2 w-[25%]">
-              <Tag
-                icon={<CheckCircleOutlined />}
-                bordered={false}
-                color="success">
-                success
+              <Tag bordered={false} color="var(--primary-light)">
+                <div className=" flex items-center">
+                  <BiSolidShow className="text-primary" />
+                  <span className="text-primary font-noto inline-block">
+                    แอดมินกำลังดูอยู่
+                  </span>
+                </div>
               </Tag>
             </div>
             <div className="flex justify-end">
-              <div className="grid  grid-cols-1 sm:grid-cols-5 gap-x-1">
+              <div className="grid  grid-cols-5 gap-x-1">
                 <Button
                   type="primary"
                   className="btn-icon-grey"
+                  onClick={() => {
+                    _prop?.pinChat();
+                  }}
                   icon={
                     <svg
                       width="20"
@@ -199,7 +206,11 @@ export default function ChatRoomUnlock(_prop: any) {
                       xmlns="http://www.w3.org/2000/svg">
                       <path
                         d="M15.8337 14.7573C15.8337 13.059 14.8437 11.5607 13.3337 10.6573V4.75732H13.7503C14.0818 4.75732 14.3998 4.62563 14.6342 4.39121C14.8686 4.15679 15.0003 3.83884 15.0003 3.50732C15.0003 3.1758 14.8686 2.85786 14.6342 2.62344C14.3998 2.38902 14.0818 2.25732 13.7503 2.25732H6.25033C5.9188 2.25732 5.60086 2.38902 5.36644 2.62344C5.13202 2.85786 5.00033 3.1758 5.00033 3.50732C5.00033 3.83884 5.13202 4.15679 5.36644 4.39121C5.60086 4.62563 5.9188 4.75732 6.25033 4.75732H6.66699V10.6573C5.15699 11.5607 4.16699 13.059 4.16699 14.7573H9.16699V18.0907C9.16699 18.549 9.54199 18.924 10.0003 18.924C10.4587 18.924 10.8337 18.549 10.8337 18.0907V14.7573H15.8337Z"
-                        fill="#FF6C11"
+                        fill={
+                          _prop?.userChatRoom.pin
+                            ? "var(--primary)"
+                            : "var(--drak-grey)"
+                        }
                       />
                     </svg>
                   }
@@ -491,7 +502,7 @@ export default function ChatRoomUnlock(_prop: any) {
           </div>
           <Divider className="my-2" />
           <div className="tab-wrap">
-            <Tabs defaultActiveKey="2" centered>
+            <Tabs defaultActiveKey="1" centered>
               <Tabs.TabPane tab="ตั้งค่า" key="1">
                 <TabSetting />
               </Tabs.TabPane>
@@ -499,7 +510,7 @@ export default function ChatRoomUnlock(_prop: any) {
                 <TabData />
               </Tabs.TabPane>
               <Tabs.TabPane tab="ประวัติแชท" key="3">
-                Content of Tab Pane 3
+                <TabHistory />
               </Tabs.TabPane>
             </Tabs>
           </div>

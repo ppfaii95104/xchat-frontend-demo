@@ -16,7 +16,7 @@ import {
   Space,
   Checkbox,
 } from "antd";
-import { SearchOutlined, UserOutlined } from "@ant-design/icons";
+import { SearchOutlined, UserOutlined, CheckOutlined } from "@ant-design/icons";
 import {
   adminListSample,
   tagListSample,
@@ -127,11 +127,11 @@ export default function SelectTagModal(_prop: any) {
                   </div>
                 </div>
 
-                <Checkbox
-                  onClick={() => {
-                    addTag(item);
+                <CheckOutlined
+                  style={{
+                    visibility: find ? "visible" : "hidden",
+                    color: "var(--primary)",
                   }}
-                  checked={find ? true : false}
                 />
               </div>
             );

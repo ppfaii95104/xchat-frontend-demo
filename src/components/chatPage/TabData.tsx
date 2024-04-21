@@ -11,6 +11,7 @@ import {
   Tooltip,
   message,
   Alert,
+  notification,
 } from "antd";
 import {
   BiSolidFile,
@@ -34,10 +35,12 @@ import ChatInfoAttributeConfirmModal from "./ChatInfoAttributeConfirmModal";
 import AlertComponent from "../AlertComponent";
 import SearchContactAttributeModal from "./SearchContactAttributeModal";
 import ContactAttributeConfirmModal from "./ContactAttributeConfirmModal";
+import NotificationComponents from "../NotificationComponents";
+
 type FieldType = {
   note?: string;
 };
-
+type NotificationType = "success" | "info" | "warning" | "error";
 export default function TabData(_prop: any) {
   const [form] = Form.useForm();
 
@@ -52,22 +55,27 @@ export default function TabData(_prop: any) {
   const [openTagModal, setOpenTagModal] = useState(false);
   const [openDeleteModal, setOpenDeleteModal] = useState(false);
   const [openContactModal, setOpenContactModal] = useState(false);
-  const [openDeleteContactModal, setOpenDeleteContactModal] = useState(false);
+
   const onFinish: FormProps<FieldType>["onFinish"] = (values: any) => {
     console.log(values);
   };
-  const [messageApi, contextHolder] = message.useMessage();
+  const [api, contextHolder] = notification.useNotification();
+
+  const deleteChatInfoAttribute = () => {
+    console.log("🚀 ~ deleteChatInfoAttribute");
+    setListChatInfoAttribute({});
+
+    setOpenDeleteModal(false);
+    NotificationComponents("success", "ลบแอตทริบิวต์เรียบร้อยแล้ว");
+  };
+  const deleteContactAttribute = () => {
+    setListContactAttribute({});
+  };
 
   useEffect(() => {
     setIsEdit(false);
   }, []);
-  useEffect(() => {
-    console.log("🚀 ~ TabData ~ isEdit:", isEdit);
-  }, [isEdit]);
 
-  useEffect(() => {
-    console.log("🚀 ~ TabData ~ note:", note);
-  }, [note]);
   return (
     <div>
       <Form name="basic" layout="vertical" onFinish={onFinish} form={form}>
@@ -119,8 +127,7 @@ export default function TabData(_prop: any) {
                 </span>
                 <div className="flex">
                   {isEdit ? (
-                    <>
-                      {" "}
+                    <Space>
                       <Tooltip title="คัดลอกแอตทริบิวต์">
                         <Button
                           type="link"
@@ -179,7 +186,7 @@ export default function TabData(_prop: any) {
                             setIsEdit(!isEdit);
                           }}></Button>
                       </Tooltip>
-                    </>
+                    </Space>
                   ) : null}
                   <Tooltip title="ลบแอตทริบิวต์">
                     <Button
@@ -207,7 +214,8 @@ export default function TabData(_prop: any) {
                         </svg>
                       }
                       onClick={() => {
-                        // setOpenDeleteModal(true);
+                        console.log("ลบแอตทริบิวต์");
+                        setOpenDeleteModal(true);
                       }}></Button>
                   </Tooltip>
                 </div>
@@ -250,6 +258,7 @@ export default function TabData(_prop: any) {
             borderBlockStart: "2px solid rgba(5, 5, 5, 0.06)",
           }}
         />
+
         <div className="px-[15px]  py-[5px] mb-2">
           <div className=" mb-2 flex justify-between items-center">
             <span className="font-noto">แอตทริบิวต์ผู้ติดต่อ</span>
@@ -364,7 +373,7 @@ export default function TabData(_prop: any) {
                         </svg>
                       }
                       onClick={() => {
-                        // setOpenDeleteModal(true);
+                        deleteContactAttribute();
                       }}></Button>
                   </Tooltip>
                 </div>
@@ -412,6 +421,7 @@ export default function TabData(_prop: any) {
         setOpen={setOpenDeleteModal}
         open={openDeleteModal}
         name={listChatInfoAttribute.name}
+        handelDelete={deleteChatInfoAttribute}
       />
       <SearchContactAttributeModal
         setOpen={setOpenContactModal}
@@ -419,11 +429,7 @@ export default function TabData(_prop: any) {
         setListAttribute={setListContactAttribute}
         listAttribute={listContactAttribute}
       />
-      <ContactAttributeConfirmModal
-        setOpen={setOpenDeleteContactModal}
-        open={openDeleteContactModal}
-        name={listContactAttribute.name}
-      />
+
       {/* <AlertComponent /> */}
     </div>
   );

@@ -12,7 +12,7 @@ export default function ProgressComponent(_prop: any) {
     calculator();
   }, [_prop]);
   return (
-    <div className="bg-[var(--table-head)]  w-[150px] h-[20px] flex rounded-full relative">
+    <div className="bg-[var(--table-head)] w-full h-[20px]  rounded-full relative flex items-center">
       <div
         style={{
           height: "20px",
@@ -20,7 +20,7 @@ export default function ProgressComponent(_prop: any) {
           backgroundColor: "var(--success)",
           borderRadius: total >= 100 ? "90px" : "90px 0px 0px 90px",
         }}></div>
-      <span className="text-[10px] inline-block absolute top-[30%] text-center w-full text-drak-grey">
+      <span className="text-[10px] h-[20px]  text-center w-full text-drak-grey absolute top-0 flex items-center justify-center">
         {_prop.data.progress} / {_prop.data.total} ({total.toFixed(2)}%)
       </span>
     </div>

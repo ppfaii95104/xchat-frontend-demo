@@ -16,7 +16,7 @@ import {
   Space,
   Checkbox,
 } from "antd";
-import { SearchOutlined, UserOutlined } from "@ant-design/icons";
+import { SearchOutlined, UserOutlined, CheckOutlined } from "@ant-design/icons";
 import { adminListSample, userList } from "@/app/broadcast/sampleData";
 type FieldType = {
   search?: string;
@@ -128,12 +128,18 @@ export default function SelectAdminModal(_prop: any) {
                     </span>
                   </div>
                 </div>
-                <Checkbox
+                <CheckOutlined
+                  style={{
+                    visibility: find ? "visible" : "hidden",
+                    color: "var(--primary)",
+                  }}
+                />
+                {/* <Checkbox
                   onClick={() => {
                     addAdmin(item);
                   }}
                   checked={find ? true : false}
-                />
+                /> */}
               </div>
             );
           })}

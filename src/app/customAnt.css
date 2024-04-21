@@ -14,7 +14,9 @@
   box-shadow: 0 2px 0 rgba(5, 145, 255, 0.1);
 }
 
-.ant-btn-background-ghost {
+.ant-btn-background-ghost,
+.ant-upload-wrapper.ant-upload-picture-card-wrapper
+  .ant-upload.ant-upload-select:not(.ant-upload-disabled):hover {
   color: var(--primary) !important;
   border-color: var(--primary) !important;
 }
@@ -88,7 +90,8 @@
 .ant-picker-dropdown .ant-picker-header button,
 .ant-picker-dropdown .ant-picker-content th,
 .ant-picker-cell-inner,
-.ant-modal-title {
+.ant-modal-title,
+.ant-tooltip-inner {
   font-family: var(--font-noto);
 }
 :where(.css-dev-only-do-not-override-1kuana8).ant-btn-default:not(
@@ -132,5 +135,15 @@
 .ant-table-footer {
   padding: 8px;
   background-color: var(--white) !important;
+}
+.ant-upload-list-item-actions {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.ant-upload-wrapper.ant-upload-picture-card-wrapper
+  .ant-upload.ant-upload-select {
+  border: 1px solid #d9d9d9;
+  border-radius: 10px;
 }
 /* ========================================================= ANT CSS =======================================================  */

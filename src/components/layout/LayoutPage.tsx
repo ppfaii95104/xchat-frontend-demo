@@ -32,11 +32,13 @@ import {
 import logo from "@/asset/logo/logo.png";
 import { Noto_Sans_Thai } from "next/font/google";
 import ChangeAdminModal from "../chatPage/ChangeAdminModal";
-import { useRouter } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
+import { title } from "process";
 const { Header, Sider, Content } = Layout;
-
+type pageType = "chat" | "broadcast";
 export default function LayoutPage(_prop: any) {
   const router = useRouter();
+  const location = usePathname();
   const [openChangeAdmin, setOpenChangeAdmin] = useState(false);
   const [adminData, setAdminData] = useState<any>({
     id: 1,
@@ -46,43 +48,50 @@ export default function LayoutPage(_prop: any) {
       "https://img.freepik.com/free-photo/confident-attractive-caucasian-guy-beige-pullon-smiling-broadly-while-standing-against-gray_176420-44508.jpg?t=st=1712671203~exp=1712674803~hmac=533413db40a1e24dc770323bbf7bc7cd6f0ea704ee61e1a9839c1eab7478c389&w=2000",
   });
   const setAdmin = (value: any) => {
-    console.log("🚀 ~ setAdmin ~ value:", value);
     setAdminData(value);
     setOpenChangeAdmin(false);
   };
-  useEffect(() => {
-    console.log({ _prop });
-  }, []);
+
   const onClick: MenuProps["onClick"] = (e) => {
     console.log("click ", e);
   };
   const menu = [
     {
-      key: "/chat/dashboard",
+      key: "chat",
       icon: <IoChatbubbleEllipses />,
-      label: "Chat",
+      title: "Chat",
+      url: "/chat/dashboard",
     },
     {
-      key: "/broadcast/line/setting",
+      key: "broadcast",
       icon: <GrAnnounce />,
-      label: "Broadcast",
+      title: "Broadcast",
+      url: "/broadcast/line/setting",
     },
     {
       key: "3",
       icon: <HiMiniUsers />,
-      label: "ผู้ติดต่อ",
+      title: "ผู้ติดต่อ",
     },
     {
       key: "4",
       icon: <HiChartBarSquare />,
-      label: "รายงาน",
+      title: "รายงาน",
     },
     {
       key: "5",
       icon: <IoIosSettings />,
-      label: "ตั้งค่าบัญชี",
+      title: "ตั้งค่าบัญชี",
     },
   ];
+  const pageNameMap: Record<string, string> = {
+    chat: "Chat",
+    broadcast: "Broadcast",
+  };
+  useEffect(() => {
+    console.log("location", location.split("/")[1]);
+    console.log("location", location.split("/"));
+  }, [location]);
   return (
     <>
       {" "}
@@ -107,15 +116,16 @@ export default function LayoutPage(_prop: any) {
 
           <Menu
             mode="inline"
-            defaultSelectedKeys={["1"]}
+            defaultSelectedKeys={[location.split("/")[1]]}
             onClick={onClick}
             items={menu}
             style={{
               borderInlineEnd: "0",
               padding: "0 17px",
             }}
-            onSelect={({ item, key, keyPath, selectedKeys, domEvent }) => {
-              router.push(key);
+            onSelect={(e: any) => {
+              console.log();
+              router.push(`${e.item?.props?.url}`);
             }}
           />
         </Sider>
@@ -126,8 +136,11 @@ export default function LayoutPage(_prop: any) {
               padding: "0 20px",
               background: "#fff",
               display: "flex",
-              justifyContent: "flex-end",
+              justifyContent: "space-between",
             }}>
+            <span className="text-[20px] font-bold">
+              {pageNameMap[location.split("/")[1]]}
+            </span>
             <div className="flex items-center ">
               <Button
                 style={{

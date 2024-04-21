@@ -7,6 +7,9 @@ const config: Config = {
     "./src/app/**/*.{js,ts,jsx,tsx,mdx}",
   ],
   theme: {
+    screens: {
+      laptop: "1040px",
+    },
     extend: {
       fontFamily: {
         noto: ["var(--font-noto)"],

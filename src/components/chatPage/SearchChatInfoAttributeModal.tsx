@@ -32,7 +32,6 @@ import {
 export default function SearchChatInfoAttributeModal(_prop: any) {
   const [form] = Form.useForm();
   const [listData, setListData] = useState<any[]>(listChatInfoAttributeSample);
-
   const onFinish: FormProps<FieldType>["onFinish"] = (values: any) => {
     if (_.isEmpty(values.search)) {
       setListData(userList);

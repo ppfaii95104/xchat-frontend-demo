@@ -100,8 +100,15 @@ export default function SearchContactAttributeModal(_prop: any) {
           <div className="h-[200px] w-full flex flex-col mt-5 overflow-y-auto">
             {_.isEmpty(listData) ? (
               <div>
-                <div className="h-[100px] w-full flex items-center justify-center font-noto text-drak-grey">
+                <div className="h-[100px] w-full flex items-center justify-center font-noto text-drak-grey flex-col">
                   ไม่พบแอตทริบิวต์นี้
+                  <Button
+                    type="link"
+                    className="flex items-center text-primary p-0 font-noto mt-10"
+                    icon={<BiSolidPlusSquare />}
+                    onClick={() => {}}>
+                    เพิ่มแอตทริบิวต์
+                  </Button>{" "}
                 </div>
               </div>
             ) : (

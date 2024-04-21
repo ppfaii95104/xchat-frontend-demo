@@ -46,6 +46,7 @@ export default function ChatRoomInput(_prop: any) {
         element: <NoteMessenge messenge={values.note} />,
       });
     }
+    form.resetFields();
   };
   const sentPromotiom = (values: any) => {
     _prop?.addMessenge({
@@ -65,7 +66,7 @@ export default function ChatRoomInput(_prop: any) {
             tab="ตอบกลับ"
             key="1"
             className="w-full h-[136px] bg-white p-2">
-            <div className="w-full h-full bg-grey  p-2 rounded-md flex flex-col justify-evenly">
+            <div className="w-full h-full bg-grey  p-2 rounded-md flex flex-col justify-evenly overflow-y-auto">
               <Form.Item<FieldType>
                 name="messnge"
                 className="mb-0"
@@ -77,7 +78,7 @@ export default function ChatRoomInput(_prop: any) {
                 // ]}
               >
                 <TextArea
-                  rows={2}
+                  autoSize={{ minRows: 2, maxRows: 2 }}
                   placeholder="พิพม์ข้อความ (Shift + Enter เพื่อขึ้นบรรทัดใหม่ , Enter เพื่อส่ง)"
                   variant="borderless"
                 />
@@ -198,7 +199,7 @@ export default function ChatRoomInput(_prop: any) {
                 // ]}
               >
                 <TextArea
-                  rows={2}
+                  autoSize={{ minRows: 2, maxRows: 2 }}
                   placeholder="พิพม์ข้อความ (Shift + Enter เพื่อขึ้นบรรทัดใหม่ , Enter เพื่อส่ง)"
                   variant="borderless"
                 />

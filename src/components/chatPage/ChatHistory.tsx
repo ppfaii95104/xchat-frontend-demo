@@ -1,5 +1,5 @@
 "use client"; // This is a client component 👈🏽
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import MessengerLogo from "@/components/logo/MessengerLogo";
 import TelegramLogo from "@/components/logo/TelegramLogo";
 import TiktokLogo from "@/components/logo/TiktokLogo";
@@ -33,22 +33,13 @@ import {
   SearchOutlined,
   BarsOutlined,
 } from "@ant-design/icons";
-export default function ChatRoom(_prop: any) {
+export default function ChatHistory(_prop: any) {
   return (
-    <div
-      className=" p-4 flex items-center relative border-b-[1px] border-grey "
-      onClick={() => {
-        _prop?.setUserChatRoom(_prop?.data);
-      }}
-      style={{
-        backgroundColor: _prop?.data.pin
-          ? "var(--primary-light)"
-          : "var(--white)",
-      }}>
+    <div className=" p-2 flex items-center relative border-b-[1px] border-grey ">
       {_prop?.data.image ? (
-        <Avatar size={42} src={_prop?.data.image} />
+        <Avatar size={40} src={_prop?.data.image} />
       ) : (
-        <Avatar size={42} icon={<UserOutlined />} />
+        <Avatar size={40} icon={<UserOutlined />} />
       )}
 
       <div className="flex flex-col mx-2 w-[45%]">
@@ -63,32 +54,21 @@ export default function ChatRoom(_prop: any) {
             <WhatsAppLogo />
           ) : null}
 
-          <span className="font-noto text-xs ml-1 truncate">
-            {_prop?.data.app}
-          </span>
+          <p className="font-noto text-xs ml-1 truncate">{_prop?.data.app}</p>
         </div>
-        <span className="font-noto chat-name my-1 truncate">
-          {_prop?.data.name}
-        </span>
-        <span className="font-noto chat-messenge truncate">
-          {_prop?.data.text}
-        </span>
+        <p className="font-noto chat-name my-1 truncate">{_prop?.data.name}</p>
+        <p className="font-noto chat-messenge truncate">{_prop?.data.text}</p>
       </div>
       <div className="w-[35%]">
         <div className="flex items-baseline justify-end">
           <UserOutlined className="text-[10px]" />
           <span className="font-noto text-[10px] ml-1">
-            {_prop?.data.status}
+            {_prop?.data.admin}
           </span>
         </div>
         <span className="font-noto flex justify-end my-1">
           {_prop?.data.time}
         </span>
-        <div className="flex justify-end">
-          <Avatar className="bg-gradient " size={15}>
-            <span className="font-noto">{_prop?.data.num}</span>
-          </Avatar>
-        </div>
       </div>
     </div>
   );

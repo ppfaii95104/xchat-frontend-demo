@@ -50,9 +50,7 @@ export default function AddAdminModal(_prop: any) {
   };
   const deleteRow = (values: any) => {
     const newData = data;
-    console.log({ values });
     const find = _.findIndex(newData, (a) => a.key === values.key);
-    console.log({ find });
     newData.splice(find, 1);
     setData([...newData]);
   };

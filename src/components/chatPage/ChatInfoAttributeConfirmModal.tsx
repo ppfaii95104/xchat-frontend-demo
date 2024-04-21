@@ -24,9 +24,10 @@ export default function ChatInfoAttributeConfirmModal({ ..._prop }) {
       open={_prop?.open}
       width={300}
       closeIcon={false}
-      onOk={() => {}}
-      onCancel={() => {
+      onOk={() => {
         _prop?.handelDelete();
+      }}
+      onCancel={() => {
         _prop?.setOpen(false);
       }}
       okText="ยืนยัน"

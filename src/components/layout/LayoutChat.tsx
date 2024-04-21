@@ -56,11 +56,12 @@ import {
 } from "../../app/chat/sampleData";
 import ChatRoomUnlock from "@/components/chatPage/ChatRoomUnlock";
 import LayoutPage from "./LayoutPage";
-import { useRouter } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 
 export default function LayoutChat(_prop: any) {
   const [collapsed, setCollapsed] = useState(false);
   const router = useRouter();
+  const location = usePathname();
   const [openTagModal, setOpenTagModal] = useState(false);
   const [listTag, setListTag] = useState<tagType[]>([]);
   const toggleCollapsed = () => {
@@ -118,6 +119,7 @@ export default function LayoutChat(_prop: any) {
             <Divider className="my-1" />
 
             <Menu
+              selectedKeys={[location]}
               mode="inline"
               items={[
                 {
@@ -126,9 +128,9 @@ export default function LayoutChat(_prop: any) {
                   label: "บรอดแคสต์",
                 },
               ]}
-              onSelect={({ item, key, keyPath, selectedKeys, domEvent }) => {
-                router.push(key);
-              }}
+              // onSelect={({ item, key, keyPath, selectedKeys, domEvent }) => {
+              //   router.push(key);
+              // }}
               style={{
                 borderInlineEnd: "0",
                 fontFamily: "var(--font-noto)",
@@ -137,35 +139,35 @@ export default function LayoutChat(_prop: any) {
             <Divider className="my-1" />
             <Menu
               mode="inline"
-              defaultSelectedKeys={["1"]}
+              selectedKeys={[location]}
               items={[
                 {
-                  key: "1",
+                  key: "/chat/dashboard",
                   icon: <IoChatbubbleEllipses />,
                   label: "ทั้งหมด",
                 },
                 {
-                  key: "2",
+                  key: "/chat/my",
                   icon: <HiMiniUser />,
                   label: "ของฉัน",
                 },
                 {
-                  key: "3",
+                  key: "/chat/mention",
                   icon: <FaAt />,
                   label: "การกล่าวถึง",
                 },
                 {
-                  key: "4",
+                  key: "/chat/not-assigned",
                   icon: <BiSolidFile />,
                   label: "ไม่ได้รับมอบหมาย",
                 },
                 {
-                  key: "5",
+                  key: "/chat/unattended",
                   icon: <IoLogIn />,
                   label: "ไม่ได้เข้าร่วม",
                 },
                 {
-                  key: "6",
+                  key: "/chat/pin",
                   icon: <BsPinFill />,
                   label: "ปักหมุด",
                 },

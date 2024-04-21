@@ -44,6 +44,7 @@ import AlertComponent from "@/components/AlertComponent";
 import TagStatusComponent from "@/components/TagStatusComponent";
 import ProgressComponent from "@/components/ProgressComponent";
 import { useRouter } from "next/navigation";
+import BroadcastInfoModal from "@/components/broadcast/BroadcastInfoModal";
 interface DataType {
   key: React.Key;
   line: string;
@@ -58,6 +59,8 @@ interface DataType {
 
 export default function PageBroadcastManageAdmin(_prop: any) {
   const router = useRouter();
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [dataInFo, setDataInFo] = useState({});
   const columns: TableColumnsType<DataType> = [
     {
       title: "ไลน์",
@@ -83,6 +86,7 @@ export default function PageBroadcastManageAdmin(_prop: any) {
     {
       title: "% ความก้าวหน้า",
       dataIndex: "progress",
+      width: "200px",
       render: (value: any, record: DataType, index: number) => {
         return <ProgressComponent data={record} />;
       },
@@ -97,6 +101,38 @@ export default function PageBroadcastManageAdmin(_prop: any) {
     {
       title: "",
       dataIndex: "id",
+      render: (value: any, record: DataType, index: number) => {
+        return (
+          <Button
+            type="link"
+            className="flex items-center text-drak-grey p-0 font-noto"
+            icon={
+              <svg
+                width="16"
+                height="17"
+                viewBox="0 0 16 17"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg">
+                <path
+                  fill-rule="evenodd"
+                  clip-rule="evenodd"
+                  d="M8.00011 7.36462C7.11344 7.36462 6.39211 8.08596 6.39211 8.97262C6.39211 9.85929 7.11344 10.5806 8.00011 10.5806C8.88678 10.5806 9.60811 9.85929 9.60811 8.97262C9.60811 8.08596 8.88678 7.36462 8.00011 7.36462Z"
+                  fill="#6D6D6D"
+                />
+                <path
+                  fill-rule="evenodd"
+                  clip-rule="evenodd"
+                  d="M8.00011 11.5808C6.56211 11.5808 5.39211 10.4108 5.39211 8.97282C5.39211 7.53482 6.56211 6.36482 8.00011 6.36482C9.43811 6.36482 10.6081 7.53482 10.6081 8.97282C10.6081 10.4108 9.43811 11.5808 8.00011 11.5808ZM8.00011 3.77148C4.39878 3.77148 1.49878 6.61682 1.49878 8.97282C1.49878 11.3288 4.39878 14.1742 8.00011 14.1742C11.6014 14.1742 14.5014 11.3288 14.5014 8.97282C14.5014 6.61682 11.6014 3.77148 8.00011 3.77148Z"
+                  fill="#6D6D6D"
+                />
+              </svg>
+            }
+            onClick={() => {
+              setDataInFo(record);
+              setIsModalOpen(true);
+            }}></Button>
+        );
+      },
     },
   ];
 
@@ -119,7 +155,7 @@ export default function PageBroadcastManageAdmin(_prop: any) {
       admin: `แอดมิน${i}`,
       time: `2024-02-1${i} 00:00`,
       status: statusSample,
-      progress: 50 + i,
+      progress: 500,
       total: 1000,
       creact_date: `2024-02-1${i} 00:00`,
       update_date: `2024-02-1${i} 00:00`,
@@ -160,10 +196,15 @@ export default function PageBroadcastManageAdmin(_prop: any) {
           <Table
             columns={columns}
             dataSource={data}
-            scroll={{ x: "max-content" }}
+            scroll={{ x: "max-content", y: "max-content" }}
           />
         </ConfigProvider>
       </div>
+      <BroadcastInfoModal
+        open={isModalOpen}
+        setOpen={setIsModalOpen}
+        data={dataInFo}
+      />
     </LayoutBroadcast>
   );
 }

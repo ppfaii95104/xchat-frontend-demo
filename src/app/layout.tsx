@@ -21,6 +21,7 @@ export default function RootLayout({
     <html lang="th">
       <head>
         <title>xChat</title>
+        <link rel="icon" href="/favicon/favicon.ico" />
       </head>
 
       <body className={`${noto.variable}`}>
