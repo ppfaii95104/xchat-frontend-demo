@@ -18,7 +18,13 @@ import {
   UploadProps,
   Image,
 } from "antd";
-import React, { useState } from "react";
+import React, {
+  createRef,
+  useEffect,
+  useLayoutEffect,
+  useRef,
+  useState,
+} from "react";
 import { BiSolidPlusSquare } from "react-icons/bi";
 import { HiMiniUser } from "react-icons/hi2";
 import CustomDatePicker from "../DatePicker";
@@ -27,12 +33,13 @@ import SelectAdminModal from "./SelectAdminModal";
 import _ from "lodash";
 import SelectTagModal from "./SelectTagModal";
 import { SearchOutlined, UserOutlined, PlusOutlined } from "@ant-design/icons";
-import TextArea from "antd/es/input/TextArea";
+import { useOverflowDetector } from "react-detectable-overflow";
 import NotificationComponents from "../NotificationComponents";
 import { useRouter } from "next/navigation";
 import BubblesText from "./BubblesText";
 import BubblesImage from "./BubblesImage";
 import BubblesCard from "./BubblesCard";
+import BroadcastMoreInfoModal from "./BroadcastMoreInfoModal";
 type FieldType = {
   status?: string;
   timer?: string;
@@ -42,14 +49,13 @@ type FieldType = {
 };
 type BubblesType = "text" | "image" | "card";
 
-export default function CreateBroadcast(_prop: any) {
+export default function CreateBroadcast(this: any, _prop: any) {
   const [form] = Form.useForm();
   const router = useRouter();
   const [openSelectAdminModal, setOpenSelectAdminModal] = useState(false);
   const [openSelectTagModal, setOpenSelectTagModal] = useState(false);
-  const [openFormCard, setOpenFormCard] = useState(false);
-  const [openFormImage, setOpenFormImage] = useState(false);
-  const [openFormText, setOpenFormText] = useState(false);
+  const [openMoreInfoModal, setOpenMoreInfoModal] = useState(false);
+
   const [adminList, setAdminList] = useState<any>([]);
   const [tagList, setTagList] = useState<any>([]);
   const [bubblesList, setBubblesList] = useState<any>([]);
@@ -91,21 +97,12 @@ export default function CreateBroadcast(_prop: any) {
     setBubblesList([...newData]);
   };
   const addAdmin = (values: any) => {
-    const newData = adminList;
-    _.map(values, (item: any) => {
-      newData.push(item);
-    });
-
-    setAdminList(newData);
+    setAdminList([...values]);
     setOpenSelectAdminModal(false);
   };
-  const addTag = (values: any) => {
-    const newData = tagList;
-    _.map(values, (item: any) => {
-      newData.push(item);
-    });
 
-    setTagList([...newData]);
+  const addTag = (values: any) => {
+    setTagList([...values]);
     setOpenSelectTagModal(false);
   };
   const deleteTag = (values: any) => {
@@ -122,6 +119,7 @@ export default function CreateBroadcast(_prop: any) {
     newData.splice(find, 1);
     setAdminList([...newData]);
   };
+  const divRef = useRef<HTMLDivElement | null>(null);
 
   return (
     <div className="pt-2 px-4">
@@ -144,13 +142,26 @@ export default function CreateBroadcast(_prop: any) {
             </Tag>
             <Tag color="var(--success-light)">
               <span className="text-drak-grey font-noto flex items-center">
-                <HiMiniUser className="text-[var(--success)] mr-1" />
+                <Badge color="var(--success)" className="mr-1" size="small" />
                 จำนวนแชทที่เลือก : 0 แชท
               </span>
             </Tag>
             <Tag color="var(--primary-light)">
               <span className="text-drak-grey font-noto flex items-center">
-                <HiMiniUser className="text-[var(--primary)] mr-1" />
+                <svg
+                  className="text-[var(--primary)] mr-1"
+                  width="11"
+                  height="11"
+                  viewBox="0 0 11 11"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg">
+                  <path
+                    fill-rule="evenodd"
+                    clip-rule="evenodd"
+                    d="M5.01622 6.84792C4.89122 6.89958 4.74831 6.94833 4.61497 6.94833C4.51164 6.94833 4.41456 6.91917 4.33539 6.84C4.27747 6.78208 4.09956 6.60458 4.10456 5.43208C4.10914 4.26583 4.27956 4.09583 4.33539 4.03958C4.53206 3.84333 4.85747 3.97708 4.99664 4.035C5.33997 4.17708 6.68414 4.9175 6.68414 5.44C6.68414 5.97083 5.31081 6.72583 5.01622 6.84792ZM5.11914 1.4375C2.11997 1.4375 1.05664 2.50083 1.05664 5.5C1.05664 8.49917 2.11997 9.5625 5.11914 9.5625C8.11872 9.5625 9.18164 8.49917 9.18164 5.5C9.18164 2.50083 8.11872 1.4375 5.11914 1.4375Z"
+                    fill="#FF6C11"
+                  />
+                </svg>
                 กำลังทำงานอยู่ : 0/0 รายการ
               </span>
             </Tag>
@@ -166,25 +177,40 @@ export default function CreateBroadcast(_prop: any) {
           </Button>
         </div>
         <Divider className="my-2" />
-        <div>
-          {_.map(adminList, (item: any) => {
-            return (
-              <Tag
-                closeIcon
-                onClose={() => {
-                  deleteAdmin(item);
-                }}
-                className=" my-1">
-                {item.image ? (
-                  <Avatar size={15} src={item.image} />
-                ) : (
-                  <Avatar size={15} icon={<UserOutlined />} />
-                )}
+        <div ref={divRef}>
+          <div>
+            {_.map([...adminList], (item: any, index: number) => {
+              if (index < 14) {
+                return (
+                  <Tag
+                    key={item.id}
+                    closeIcon
+                    onClose={() => {
+                      deleteAdmin(item);
+                    }}
+                    className=" my-1">
+                    {item.image ? (
+                      <Avatar size={15} src={item.image} />
+                    ) : (
+                      <Avatar size={15} icon={<UserOutlined />} />
+                    )}
 
-                <span className="ml-1 ">{item.name}</span>
-              </Tag>
-            );
-          })}
+                    <span className="ml-1 font-noto">{item.name}</span>
+                  </Tag>
+                );
+              }
+            })}
+            <Tag
+              className="mr-0"
+              style={{
+                visibility: adminList.length > 14 ? "visible" : "hidden",
+              }}
+              onClick={() => {
+                setOpenMoreInfoModal(true);
+              }}>
+              <span className="font-noto">+{adminList.length} เพิ่มเติม</span>
+            </Tag>
+          </div>
         </div>
         <div className="mt-3">
           <div className="flex justify-between items-center">
@@ -394,6 +420,14 @@ export default function CreateBroadcast(_prop: any) {
         setOpen={setOpenSelectTagModal}
         addTag={addTag}
       />
+      <BroadcastMoreInfoModal
+        open={openMoreInfoModal}
+        setOpen={setOpenMoreInfoModal}
+        adminList={adminList}
+      />
     </div>
   );
+}
+function useCallbackRef(arg0: null, arg1: (ref: any) => any) {
+  throw new Error("Function not implemented.");
 }

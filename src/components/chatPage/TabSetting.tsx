@@ -257,8 +257,8 @@ export default function TabSetting(_prop: any) {
           <Select
             placeholder="มอบหมายให้พนักงาน, ทีม หรือตัวเอง"
             options={optionsPriority}
-            mode="tags"
-            maxCount={1}
+            // mode="tags"
+            // maxCount={1}
             allowClear
             tagRender={tagRenderAssign}
             optionRender={(option) => (

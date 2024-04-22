@@ -15,6 +15,7 @@ import {
   Radio,
   Space,
   Checkbox,
+  CheckboxProps,
 } from "antd";
 import { SearchOutlined, UserOutlined, CheckOutlined } from "@ant-design/icons";
 import {
@@ -34,7 +35,6 @@ export default function SelectTagModal(_prop: any) {
   const [tagData, setAdminData] = useState<any[]>([]);
   const onFinish: FormProps<FieldType>["onFinish"] = (values: any) => {};
   const addTag = (values: any) => {
-    console.log(tagData);
     const newData = tagData;
 
     const find = _.findIndex(newData, (a) => a === values);
@@ -45,16 +45,22 @@ export default function SelectTagModal(_prop: any) {
     }
     console.log({ newData });
     setAdminData([...newData]);
+    _prop?.addTag(newData);
+  };
+  const onChange: CheckboxProps["onChange"] = (e) => {
+    e.target.checked ? setAdminData([...data]) : setAdminData([]);
+    _prop?.addTag(e.target.checked ? data : []);
   };
   return (
     <Modal
       closeIcon={false}
       open={_prop?.open}
-      onOk={() => _prop?.addTag(tagData)}
+      // onOk={() => _prop?.addTag(tagData)}
       onCancel={() => _prop?.setOpen(false)}
       width={400}
-      okText="ตกลง"
-      cancelText="ยกเลิก"
+      footer={null}
+      // okText="ตกลง"
+      // cancelText="ยกเลิก"
       style={{ top: "17%", left: "35%" }}>
       <div>
         <Form
@@ -96,10 +102,9 @@ export default function SelectTagModal(_prop: any) {
             // ]}
           >
             <Checkbox
-              onClick={() => {
-                data === tagData ? setAdminData([]) : setAdminData(data);
-              }}
-              className="font-noto">
+              onChange={onChange}
+              className="font-noto"
+              checked={data === tagData}>
               เลือกทั้งหมด
             </Checkbox>
           </Form.Item>

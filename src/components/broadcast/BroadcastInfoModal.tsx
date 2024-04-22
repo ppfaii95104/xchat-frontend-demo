@@ -20,12 +20,18 @@ import { tagListSample } from "@/app/broadcast/sampleData";
 import TagStatusComponent from "../TagStatusComponent";
 import ProgressComponent from "../ProgressComponent";
 type FieldType = {
-  search?: string;
+  text?: string;
+  card?: string;
 };
 export default function BroadcastInfoModal({ ..._prop }) {
   const [form] = Form.useForm();
+
   const [tagList, setTagList] = useState<any>(tagListSample);
+  const [showMore, setShowMore] = React.useState(false);
+  const [showLink, setShowLink] = React.useState(false);
+
   const onFinish: FormProps["onFinish"] = (values: any) => {};
+
   useEffect(() => {
     form.setFieldsValue({
       text: "{name} Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s ",
@@ -48,7 +54,7 @@ export default function BroadcastInfoModal({ ..._prop }) {
       style={{
         padding: "8px",
       }}>
-      <Divider className="my-2 position left-0 top-10" />{" "}
+      <Divider className="my-2 absolute left-0 top-10" />{" "}
       <div className="mt-5">
         <Form
           name="basic"

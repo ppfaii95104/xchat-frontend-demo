@@ -15,6 +15,7 @@ import {
   Radio,
   Space,
   Checkbox,
+  CheckboxProps,
 } from "antd";
 import { SearchOutlined, UserOutlined, CheckOutlined } from "@ant-design/icons";
 import { adminListSample, userList } from "@/app/broadcast/sampleData";
@@ -30,7 +31,6 @@ export default function SelectAdminModal(_prop: any) {
   const [adminData, setAdminData] = useState<any[]>([]);
   const onFinish: FormProps<FieldType>["onFinish"] = (values: any) => {};
   const addAdmin = (values: any) => {
-    console.log(adminData);
     const newData = adminData;
 
     const find = _.findIndex(newData, (a) => a === values);
@@ -41,16 +41,22 @@ export default function SelectAdminModal(_prop: any) {
     }
     console.log({ newData });
     setAdminData([...newData]);
+    _prop?.addAdmin(newData);
+  };
+  const onChange: CheckboxProps["onChange"] = (e) => {
+    e.target.checked ? setAdminData([...data]) : setAdminData([]);
+    _prop?.addAdmin(e.target.checked ? data : []);
   };
   return (
     <Modal
       closeIcon={false}
       open={_prop?.open}
-      onOk={() => _prop?.addAdmin(adminData)}
-      onCancel={() => _prop?.setOpen(false)}
       width={400}
-      okText="ตกลง"
-      cancelText="ยกเลิก"
+      footer={null}
+      // okText="ตกลง"
+      // cancelText="ยกเลิก"
+      // onOk={() => _prop?.addAdmin(adminData)}
+      onCancel={() => _prop?.setOpen(false)}
       style={{ top: "17%", left: "35%" }}>
       <div>
         <Form
@@ -92,10 +98,9 @@ export default function SelectAdminModal(_prop: any) {
             // ]}
           >
             <Checkbox
-              onClick={() => {
-                data === adminData ? setAdminData([]) : setAdminData(data);
-              }}
-              className="font-noto">
+              className="font-noto"
+              onChange={onChange}
+              checked={data === adminData}>
               เลือกทั้งหมด
             </Checkbox>
           </Form.Item>
