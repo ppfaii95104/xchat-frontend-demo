@@ -62,10 +62,7 @@ export default function ChatRoomInput(_prop: any) {
         onFinish={onFinish}
         form={form}>
         <Tabs defaultActiveKey="1" type="card">
-          <Tabs.TabPane
-            tab="ตอบกลับ"
-            key="1"
-            className="w-full h-[136px] bg-white p-2">
+          <Tabs.TabPane tab="ตอบกลับ" key="1" className="w-full  bg-white p-2">
             <div className="w-full h-full bg-grey  p-2 rounded-md flex flex-col justify-evenly overflow-y-auto">
               <Form.Item<FieldType>
                 name="messnge"
@@ -78,12 +75,13 @@ export default function ChatRoomInput(_prop: any) {
                 // ]}
               >
                 <TextArea
-                  autoSize={{ minRows: 2, maxRows: 2 }}
+                  rows={2}
+                  style={{ maxHeight: "545px" }}
                   placeholder="พิพม์ข้อความ (Shift + Enter เพื่อขึ้นบรรทัดใหม่ , Enter เพื่อส่ง)"
                   variant="borderless"
                 />
               </Form.Item>
-              <div className="flex justify-between">
+              <div className="flex justify-between mt-1">
                 <div className="flex">
                   <Button
                     type="primary"
@@ -199,12 +197,13 @@ export default function ChatRoomInput(_prop: any) {
                 // ]}
               >
                 <TextArea
-                  autoSize={{ minRows: 2, maxRows: 2 }}
+                  style={{ maxHeight: "545px" }}
+                  rows={2}
                   placeholder="พิพม์ข้อความ (Shift + Enter เพื่อขึ้นบรรทัดใหม่ , Enter เพื่อส่ง)"
                   variant="borderless"
                 />
               </Form.Item>
-              <div className="flex justify-between">
+              <div className="flex justify-between mt-1">
                 <div className="flex">
                   <Button
                     type="primary"

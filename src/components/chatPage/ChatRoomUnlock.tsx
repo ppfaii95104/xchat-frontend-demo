@@ -366,7 +366,7 @@ export default function ChatRoomUnlock(_prop: any) {
           </div>
         </Content>
         {/* ================================ CHAT ROOM ================================ */}
-        <Footer className="h-[180px] border p-0 z-1">
+        <Footer className="border p-0 z-1">
           {/* <ChatRoomLock /> */}
           <ChatRoomInput addMessenge={addMessenge} />
         </Footer>
