@@ -89,7 +89,18 @@ export default function PageCreateBroadcast(_prop: any) {
                     placeholder="ค้นหา..."
                     className="font-noto mr-2"
                     prefix={<SearchOutlined />}
-                  />{" "}
+                  />
+                </div>
+                <div className="w-full px-3 mb-2">
+                  <div className="w-full bg-primary-light px-3 rounded-md">
+                    <Button
+                      type="link"
+                      className="flex items-center text-drak-grey p-0 font-noto"
+                      icon={<BiSolidPlusSquare />}
+                      onClick={() => {}}>
+                      หมายเหตุ
+                    </Button>
+                  </div>
                 </div>
                 <div className="px-5 flex justify-between items-center">
                   <span className="font-noto text-drak-grey w-max">

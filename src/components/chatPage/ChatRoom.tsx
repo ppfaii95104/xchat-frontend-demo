@@ -41,9 +41,10 @@ export default function ChatRoom(_prop: any) {
         _prop?.setUserChatRoom(_prop?.data);
       }}
       style={{
-        backgroundColor: _prop?.data.pin
-          ? "var(--primary-light)"
-          : "var(--white)",
+        backgroundColor:
+          _prop?.data === _prop?.userChatRoom
+            ? "var(--primary-light)"
+            : "var(--white)",
       }}>
       {_prop?.data.image ? (
         <Avatar size={42} src={_prop?.data.image} />

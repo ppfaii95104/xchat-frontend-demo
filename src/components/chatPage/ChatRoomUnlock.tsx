@@ -44,6 +44,7 @@ export default function ChatRoomUnlock(_prop: any) {
   const [openContactInformationModal, setOpenContactInformationModal] =
     useState(false);
   const [openEndChat, setOpenEndChat] = useState(false);
+  const [isPin, setIsPin] = useState(false);
   const [listMessenge, setListMessenge] = useState<any>([]);
   const [contactInformation, setContactInformation] = useState<any>({});
   const addMessenge = (value: any) => {
@@ -65,8 +66,8 @@ export default function ChatRoomUnlock(_prop: any) {
     setListMessenge(messenge);
   }, []);
   useEffect(() => {
-    console.log("contactInformation", contactInformation);
-  }, [contactInformation]);
+    setIsPin(_prop.userChatRoom.pin);
+  }, [_prop.userChatRoom]);
   const items = [
     {
       key: "1",
@@ -196,23 +197,34 @@ export default function ChatRoomUnlock(_prop: any) {
                   className="btn-icon-grey"
                   onClick={() => {
                     _prop?.pinChat();
+                    setIsPin(!isPin);
                   }}
                   icon={
-                    <svg
-                      width="20"
-                      height="21"
-                      viewBox="0 0 20 21"
-                      fill="none"
-                      xmlns="http://www.w3.org/2000/svg">
-                      <path
-                        d="M15.8337 14.7573C15.8337 13.059 14.8437 11.5607 13.3337 10.6573V4.75732H13.7503C14.0818 4.75732 14.3998 4.62563 14.6342 4.39121C14.8686 4.15679 15.0003 3.83884 15.0003 3.50732C15.0003 3.1758 14.8686 2.85786 14.6342 2.62344C14.3998 2.38902 14.0818 2.25732 13.7503 2.25732H6.25033C5.9188 2.25732 5.60086 2.38902 5.36644 2.62344C5.13202 2.85786 5.00033 3.1758 5.00033 3.50732C5.00033 3.83884 5.13202 4.15679 5.36644 4.39121C5.60086 4.62563 5.9188 4.75732 6.25033 4.75732H6.66699V10.6573C5.15699 11.5607 4.16699 13.059 4.16699 14.7573H9.16699V18.0907C9.16699 18.549 9.54199 18.924 10.0003 18.924C10.4587 18.924 10.8337 18.549 10.8337 18.0907V14.7573H15.8337Z"
-                        fill={
-                          _prop?.userChatRoom.pin
-                            ? "var(--primary)"
-                            : "var(--drak-grey)"
-                        }
-                      />
-                    </svg>
+                    isPin ? (
+                      <svg
+                        width="13"
+                        height="17"
+                        viewBox="0 0 13 17"
+                        fill="none"
+                        xmlns="http://www.w3.org/2000/svg">
+                        <path
+                          d="M12.0837 12.7578C12.0837 11.0595 11.0937 9.56115 9.58366 8.65781V2.75781H10.0003C10.3318 2.75781 10.6498 2.62612 10.8842 2.3917C11.1186 2.15728 11.2503 1.83933 11.2503 1.50781C11.2503 1.17629 11.1186 0.85835 10.8842 0.623929C10.6498 0.389509 10.3318 0.257813 10.0003 0.257812H2.50033C2.1688 0.257813 1.85086 0.389509 1.61644 0.623929C1.38202 0.85835 1.25033 1.17629 1.25033 1.50781C1.25033 1.83933 1.38202 2.15728 1.61644 2.3917C1.85086 2.62612 2.1688 2.75781 2.50033 2.75781H2.91699V8.65781C1.40699 9.56115 0.416992 11.0595 0.416992 12.7578H5.41699V16.0911C5.41699 16.5495 5.79199 16.9245 6.25033 16.9245C6.70866 16.9245 7.08366 16.5495 7.08366 16.0911V12.7578H12.0837Z"
+                          fill="#FF6C11"
+                        />
+                      </svg>
+                    ) : (
+                      <svg
+                        width="12"
+                        height="17"
+                        viewBox="0 0 12 17"
+                        fill="none"
+                        xmlns="http://www.w3.org/2000/svg">
+                        <path
+                          d="M11.8332 12.7573C11.8332 11.059 10.8432 9.56066 9.33317 8.65732V2.75732H9.74984C10.0814 2.75732 10.3993 2.62563 10.6337 2.39121C10.8681 2.15679 10.9998 1.83884 10.9998 1.50732C10.9998 1.1758 10.8681 0.857861 10.6337 0.623441C10.3993 0.38902 10.0814 0.257324 9.74984 0.257324H2.24984C1.91832 0.257324 1.60037 0.38902 1.36595 0.623441C1.13153 0.857861 0.999837 1.1758 0.999837 1.50732C0.999837 1.83884 1.13153 2.15679 1.36595 2.39121C1.60037 2.62563 1.91832 2.75732 2.24984 2.75732H2.6665V8.65732C1.1565 9.56066 0.166504 11.059 0.166504 12.7573H5.1665V16.0907C5.1665 16.549 5.5415 16.924 5.99984 16.924C6.45817 16.924 6.83317 16.549 6.83317 16.0907V12.7573H11.8332Z"
+                          fill="#6D6D6D"
+                        />
+                      </svg>
+                    )
                   }
                 />
                 <Button
@@ -325,39 +337,41 @@ export default function ChatRoomUnlock(_prop: any) {
           </div>
         </Header>
         {/* ================================ CHAT ROOM ================================ */}
-        <Content className="h-full relative bg-grey  w-full  p-2 ">
-          <Card bordered={false} className="w-full flex fix z-1">
-            <div className="flex items-center">
-              <span className="font-noto chat-name w-[40%]">
-                เคส : 31 ม.ค. 67 | 12:38
-              </span>
-              <div className="flex justify-end w-[60%]">
-                <Button
-                  className="font-noto flex justify-center items-center"
-                  onClick={() => {
-                    setOpenEndChat(true);
-                  }}
-                  icon={<CheckSquareFilled />}>
-                  จบแชท
-                </Button>
-                <Button
-                  className="mx-1 font-noto flex justify-center items-center"
-                  onClick={() => {
-                    setOpenAssigned(true);
-                  }}>
-                  <IoLogIn className="text-lg" />
-                  ส่งต่อให้...
-                </Button>
-                <Button
-                  className="btn-gradient font-noto flex justify-center items-center"
-                  icon={<FaUser />}>
-                  มอบหมายให้ฉัน
-                </Button>
+        <Content className="h-full relative bg-grey  w-full   ">
+          <div className="p-2">
+            <Card bordered={false} className="w-full flex fix z-1 ">
+              <div className="flex items-center">
+                <span className="font-noto chat-name w-[40%]">
+                  เคส : 31 ม.ค. 67 | 12:38
+                </span>
+                <div className="flex justify-end w-[60%]">
+                  <Button
+                    className="font-noto flex justify-center items-center"
+                    onClick={() => {
+                      setOpenEndChat(true);
+                    }}
+                    icon={<CheckSquareFilled />}>
+                    จบแชท
+                  </Button>
+                  <Button
+                    className="mx-1 font-noto flex justify-center items-center"
+                    onClick={() => {
+                      setOpenAssigned(true);
+                    }}>
+                    <IoLogIn className="text-lg" />
+                    ส่งต่อให้...
+                  </Button>
+                  <Button
+                    className="btn-gradient font-noto flex justify-center items-center"
+                    icon={<FaUser />}>
+                    มอบหมายให้ฉัน
+                  </Button>
+                </div>
               </div>
-            </div>
-          </Card>
+            </Card>
+          </div>
           <div className="overflow-hidden relative w-full h-full top-[-45px]">
-            <div className="w-full p-2 h-full overflow-scroll messagesWrapper">
+            <div className="w-full pb-4 h-full overflow-scroll messagesWrapper">
               {_.map([...listMessenge], (item: any) => {
                 return item.element;
               })}{" "}

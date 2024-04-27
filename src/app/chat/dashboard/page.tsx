@@ -119,13 +119,14 @@ export default function ChatPage(_prop: any) {
           <div className="py-2">
             {userList.length > 0 ? (
               <div>
-                {_.map(userList, (item) => {
+                {_.map([...userList], (item) => {
                   return (
                     <ChatRoom
                       key={item.id}
                       className="chat-room"
                       data={item}
                       setUserChatRoom={setUserChatRoom}
+                      userChatRoom={userChatRoom}
                     />
                   );
                 })}

@@ -35,7 +35,7 @@ import {
 } from "@ant-design/icons";
 export default function LeftMessenge(_prop: any) {
   return (
-    <div className="w-[75%] p-2 my-2">
+    <div className="w-[75%] p-3 my-2">
       <div className="mb-2">
         {_prop?.data?.image ? (
           <Avatar size={25} src={_prop?.data.image} />
