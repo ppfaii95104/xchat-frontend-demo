@@ -371,7 +371,7 @@ export default function ChatRoomUnlock(_prop: any) {
             </Card>
           </div>
           <div className="overflow-hidden relative w-full h-full top-[-45px]">
-            <div className="w-full pb-4 h-full overflow-scroll messagesWrapper">
+            <div className="w-full pb-2 h-full overflow-scroll messagesWrapper">
               {_.map([...listMessenge], (item: any) => {
                 return item.element;
               })}{" "}
